@@ -1,0 +1,25 @@
+d publ    {
+  "name": "web scrape template",
+  "authors": [
+    "m. nathaniel martin <matt.martin@rutgers.edu>"
+  ],
+  "description": "layouts for the most beautiful pictures of the day, courtesy of Reddit.",
+  "main": "main.handlebars",
+  "keywords": [
+    "web",
+    "scrape",
+    "handlebars",
+    "express",
+    "cheerio"
+  ],
+  "license": "MIT",
+  "homepage": "www.angryjenkins.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

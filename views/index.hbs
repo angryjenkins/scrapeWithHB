@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row">
+	 	<ul class="collapsible" data-collapsible="accordion">
+	 		{{#each doc}}
+	    	<li data-id="{{ this._id }}">
+	      		<div class="collapsible-header">{{!-- <i class="material-icons">filter_drama</i> --}}
+	      			{{this.title}}
+	      		</div>
+		      	<div class="collapsible-body">
+		      		<div class="col l12">
+		      			<div class="col l6">
+			      			{{!-- <img class="materialboxed responsive-img" src="{{this.link}}"> --}}
+
+			      			<img class="materialboxed responsive-img" data-caption="{{ this.title }}" src="{{ this.link }}">
+			      		</div>
+			      		<div class="col l6">
+			      			<div id="notes">
+			      				<form action="/articles/{{this._id}}" method="POST">
+			      					<legend>Notes</legend>
+			      					<div class="input-field"> 
+			      						<div class="form-group">
+			      							<label class="control-label" for="title-{{this._id}}">subject</label>
+			      							<span class="help-block"></span>
+			      							<input type="text" class="form-control" id="title-{{this._id}}" placeholder="Subject">
+			      						</div>
+			      					</div>
+
+			      					<div class="input-field"> 
+			      						<div class="form-group">
+			      							<label class="control-label" for="note-{{this._id}}">message</label>
+			      							<span class="help-block"></span>
+			      							<input type="text" class="form-control" id="note-{{this._id}}" placeholder="Message">
+			      						</div>
+			      					</div>
+			      					
+			      					<button data-id="{{this._id}}" class="btn submit">submit</button>
+			      				</form>
+			      			</div>
+			      		</div>
+		      		</div>
+		      	</div>
+		    </li>
+		    {{/each}}
+	  	</ul>
+	</div>
+	<div class="row" style="height:150px;"></div>
+</div>
