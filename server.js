@@ -52,9 +52,97 @@ app.get('/', function(req, res){
 	})
 });
 
-app.get('/scrape', function(req, res) {
+app.get('/scrape1', function(req, res) {
 
 	var picSource = 'https://www.reddit.com/r/EarthPorn/'
+
+  	request(picSource, function(error, response, html) {
+
+  		mongoose.connection.db.dropDatabase(function(err, result) {
+  			console.log('Database dropped, Site Scraped!')
+  		});
+
+	    var $ = cheerio.load(html);
+
+	    $('a.title').each(function(i, element) {
+
+			var result = {};
+
+			result.title = $(this).text();
+
+			var thisLink = $(this).attr('href');
+
+			//this limits only those links whose last 3 letters are JPG.
+			if(thisLink.slice(-3) == "jpg" || thisLink.slice(-3) == 'png'){
+				result.link = $(this).attr('href');
+			}
+
+			var entry = new Article (result);
+
+			entry.save(function(err, doc) {
+		  		if (err) {
+			    	console.log(err);
+			  	} else {
+			    	console.log(doc);
+			    	// res.render('scrape',{doc})
+			  	}
+			});
+
+		});
+
+	});
+
+	res.render('scrape',{'site':picSource})
+
+});
+
+app.get('/scrape2', function(req, res) {
+
+	var picSource = 'https://www.reddit.com/r/VillagePorn/'
+
+  	request(picSource, function(error, response, html) {
+
+  		mongoose.connection.db.dropDatabase(function(err, result) {
+  			console.log('Database dropped, Site Scraped!')
+  		});
+
+	    var $ = cheerio.load(html);
+
+	    $('a.title').each(function(i, element) {
+
+			var result = {};
+
+			result.title = $(this).text();
+
+			var thisLink = $(this).attr('href');
+
+			//this limits only those links whose last 3 letters are JPG.
+			if(thisLink.slice(-3) == "jpg" || thisLink.slice(-3) == 'png'){
+				result.link = $(this).attr('href');
+			}
+
+			var entry = new Article (result);
+
+			entry.save(function(err, doc) {
+		  		if (err) {
+			    	console.log(err);
+			  	} else {
+			    	console.log(doc);
+			    	// res.render('scrape',{doc})
+			  	}
+			});
+
+		});
+
+	});
+
+	res.render('scrape',{'site':picSource})
+
+});
+
+app.get('/scrape3', function(req, res) {
+
+	var picSource = 'https://www.reddit.com/r/CityPorn/'
 
   	request(picSource, function(error, response, html) {
 
