@@ -28,7 +28,7 @@ var Article = require('./models/Article.js');
 
 //Database configuration
 // mongoose.connect('mongodb://localhost/mongoosescraper');
-mongoose.connect('mongodb://test:test@ds037814.mlab.com:37814/heroku_mp6vbrhl');
+mongoose.connect('mongodb://matt:test@ds119588.mlab.com:19588/heroku_tcgqxp06');
 var db = mongoose.connection;
 
 db.on('error', function(err) {
