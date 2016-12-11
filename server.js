@@ -211,7 +211,7 @@ app.get('/articles/:id', function(req, res){
 
 app.post('/articles/:id', function(req, res){
 	var newNote = new Note(req.body);
-	
+
 	console.log('req: ' + req.body); // req.body is empty that is why your notes dont show up the way you want -- You need body-parser for this to work.
 
 	newNote.save(function(err, doc){
@@ -220,7 +220,7 @@ app.post('/articles/:id', function(req, res){
 		} else {
 			console.log('newNote' + newNote); // <-- Just checking progress
 			console.log('DOC: ' + doc ) // <-- Just checking progress
-			
+
 			Article.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
 			.exec(function(err, doc){
 				if (err){
