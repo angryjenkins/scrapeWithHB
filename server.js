@@ -26,8 +26,7 @@ app.set('view engine', 'hbs');
 var Note = require('./models/Note.js');
 var Article = require('./models/Article.js');
 
-//Database configuration
-// mongoose.connect('mongodb://localhost/prettypics');
+// Database configuration
 
 var mongosrc = 'heroku'
 
