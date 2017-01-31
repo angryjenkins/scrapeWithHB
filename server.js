@@ -27,15 +27,24 @@ var Note = require('./models/Note.js');
 var Article = require('./models/Article.js');
 
 //Database configuration
-// mongoose.connect('mongodb://localhost/mongoosescraper');
-mongoose.connect('mongodb://matt:test@ds119588.mlab.com:19588/heroku_tcgqxp06');
+// mongoose.connect('mongodb://localhost/prettypics');
+
+var mongosrc = 'heroku'
+
+if(mongosrc == 'local'){
+  mongoose.connect('mongodb://localhost/prettypics');
+
+} else if (mongosrc == 'heroku') {
+  mongoose.connect('mongodb://matt:test@ds119588.mlab.com:19588/heroku_tcgqxp06');
+}
+
 var db = mongoose.connection;
 
 db.on('error', function(err) {
   console.log('Mongoose Error: ', err);
 });
 db.once('open', function() {
-  console.log('Mongoose connection successful.');
+  console.log( mongosrc.toUpperCase() + ' mongodb connection successful.');
 });
 
 
@@ -87,7 +96,6 @@ app.get('/scrape1', function(req, res) {
 			    	// res.render('scrape',{doc})
 			  	}
 			});
-
 		});
 
 	});
@@ -137,7 +145,6 @@ app.get('/scrape2', function(req, res) {
 	});
 
 	res.render('scrape',{'site':picSource})
-
 });
 
 app.get('/scrape3', function(req, res) {
@@ -239,5 +246,5 @@ app.post('/articles/:id', function(req, res){
 app.use('/public',express.static('public'));
 
 app.listen(port, function() {
-  console.log('SCRAPER listening on port %s!', port);
+  console.log('Listening on port %s!', port);
 });

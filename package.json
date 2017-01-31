@@ -14,8 +14,8 @@
     "handlebars"
   ],
   "engines": {
-    "node": "6.9.2",
-    "npm": "4.0.3"
+    "node": "6.9.4",
+    "npm": "4.1.1"
   },
   "author": "m. nathaniel martin",
   "license": "ISC",
