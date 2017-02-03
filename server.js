@@ -28,7 +28,7 @@ var Article = require('./models/Article.js');
 
 // Database configuration
 
-var mongosrc = 'heroku'
+var mongosrc = 'heroku';
 
 if(mongosrc == 'local'){
   mongoose.connect('mongodb://localhost/prettypics');
